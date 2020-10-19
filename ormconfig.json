@@ -5,10 +5,13 @@
     "username":"barreiradlc",
     "password":"123123",
     "database":"gostackgobarber",
-    "migratons":[
-        "./src/database/migrations/*.ts"
-    ],
-    "cli": {
-        "migrationsDir":"./src/database/migrations"
-    }
+    "entities": [
+		"./src/models/*.ts"
+	],
+    "migrations": [
+		"./src/database/migrations/*.ts"
+	],
+	"cli": {
+		"migrationsDir": "./src/database/migrations"
+	}
 }
