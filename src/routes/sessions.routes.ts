@@ -7,18 +7,17 @@ const routes = Router()
 routes.post("/", async (request, response) => {
     const { email, password } = request.body
 
-    try {
         const authService = new AuthService()
  
-        const user = await authService.execute({
+        const { user, token } = await authService.execute({
             email,
             password
         })
 
-        return response.json(user)
-    } catch (error) {
-        return response.status(400).json({error})
-    }
+        delete user?.password
+
+        return response.json({user, token})
+    
 })
 
 export default routes

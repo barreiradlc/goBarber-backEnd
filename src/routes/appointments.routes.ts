@@ -20,7 +20,6 @@ routes.get("/", async (request, response) => {
 routes.post("/", async (request, response) => {
     const { provider_id, date } = request.body
 
-    try {
         const appointmentsRepository = getCustomRepository(AppointmentsRepository)
     
         const parsedDate = parseISO(date);
@@ -37,9 +36,7 @@ routes.post("/", async (request, response) => {
         const appointment = await createAppointmentService.execute({date: appointmentDate, provider_id })
     
         return response.json(appointment);
-    } catch (error) {
-        return response.status(400).json({error})
-    }
+    
 })
 
 export default routes
